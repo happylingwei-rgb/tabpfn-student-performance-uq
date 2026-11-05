@@ -1,0 +1,264 @@
+
+==== benchmark 2026-11-04 12:24  args={"datasets": ["math", "uci_mat", "uci_por", "spf"], "folds": 5, "repeats": 3, "n_iter": 20, "inner_cv": 3, "tabpfn_estimators": 8, "quick": false}
+
+##### math: Students Performance in Exams (US, Kaggle)  n=1000  d=7  y[0, 1] mean=0.621
+  fold 1/15  best=TabPFN  TabPFN RMSE=0.0592  (114s)
+  fold 2/15  best=Ridge  TabPFN RMSE=0.0666  (110s)
+  fold 3/15  best=TabPFN+CatBoost  TabPFN RMSE=0.0683  (89s)
+  fold 4/15  best=TabPFN  TabPFN RMSE=0.0670  (92s)
+  fold 5/15  best=TabPFN  TabPFN RMSE=0.0590  (87s)
+  fold 6/15  best=TabPFN  TabPFN RMSE=0.0691  (89s)
+  fold 7/15  best=SVR  TabPFN RMSE=0.0648  (93s)
+  fold 8/15  best=TabPFN  TabPFN RMSE=0.0605  (89s)
+  fold 9/15  best=TabPFN  TabPFN RMSE=0.0647  (81s)
+  fold 10/15  best=TabPFN  TabPFN RMSE=0.0640  (86s)
+  fold 11/15  best=Ridge  TabPFN RMSE=0.0678  (81s)
+  fold 12/15  best=TabPFN  TabPFN RMSE=0.0662  (80s)
+  fold 13/15  best=TabPFN  TabPFN RMSE=0.0640  (76s)
+  fold 14/15  best=TabPFN  TabPFN RMSE=0.0645  (81s)
+  fold 15/15  best=TabPFN  TabPFN RMSE=0.0604  (81s)
+
+  -- math summary (mean over 5x3 folds) --
+                   RMSE             MAE      R2 ROC_AUC  PR_AUC RMSE_gap
+                   mean     std    mean    mean    mean    mean     mean
+Model                                                                   
+TabPFN           0.0644  0.0033  0.0517  0.8696  0.9615  0.8670   0.0041
+TabPFN (P(y<t))  0.0644  0.0033  0.0517  0.8696  0.9562  0.8595   0.0041
+Ridge            0.0655  0.0030  0.0528  0.8651  0.9615  0.8654   0.0040
+SVR              0.0657  0.0032  0.0530  0.8645  0.9612  0.8646   0.0041
+TabPFN+CatBoost  0.0657  0.0034  0.0527  0.8642  0.9605  0.8650   0.0034
+XGBoost          0.0681  0.0038  0.0547  0.8545  0.9591  0.8585   0.0029
+GBM              0.0685  0.0039  0.0551  0.8526  0.9590  0.8561   0.0033
+LightGBM         0.0686  0.0037  0.0549  0.8522  0.9598  0.8585   0.0038
+CatBoost         0.0693  0.0037  0.0555  0.8486  0.9573  0.8553   0.0036
+RandomForest     0.0710  0.0041  0.0568  0.8416  0.9573  0.8489   0.0043
+KNN              0.0857  0.0033  0.0677  0.7690  0.9366  0.8028   0.0075
+
+  uncertainty (target 90%):
+                         Coverage           Width        
+                             mean     std    mean     std
+Method                                                   
+CQR-TabPFN                 0.9053  0.0301  0.2154  0.0139
+Split-conformal CatBoost   0.9027  0.0303  0.2291  0.0176
+TabPFN raw quantiles       0.8863  0.0213  0.2032  0.0026
+
+  significance:
+Reference              vs  mean RMSE diff  t (corrected)      p  p (Holm)
+   TabPFN             SVR         -0.0013        -2.3400 0.0346    0.1038
+   TabPFN             KNN         -0.0213       -12.2723 0.0000    0.0000
+   TabPFN           Ridge         -0.0011        -2.1741 0.0473    0.1038
+   TabPFN    RandomForest         -0.0066        -4.1131 0.0011    0.0074
+   TabPFN             GBM         -0.0041        -3.4495 0.0039    0.0195
+   TabPFN         XGBoost         -0.0037        -3.3851 0.0044    0.0195
+   TabPFN        LightGBM         -0.0042        -4.6910 0.0003    0.0028
+   TabPFN        CatBoost         -0.0049        -3.9131 0.0016    0.0094
+   TabPFN TabPFN+CatBoost         -0.0013        -2.2103 0.0442    0.1038
+
+  CatBoost SHAP top-5: {'writing_score': 0.0735, 'gender': 0.0643, 'reading_score': 0.0517, 'lunch_standard': 0.0268, 'race/ethnicity': 0.0147}  mean fold-to-fold Spearman=0.985
+
+##### uci_mat: UCI Student Performance - Mathematics (PT)  n=395  d=43  y[0, 20] mean=10.4
+  fold 1/15  best=TabPFN+CatBoost  TabPFN RMSE=4.0646  (90s)
+  fold 2/15  best=TabPFN  TabPFN RMSE=3.7898  (88s)
+  fold 3/15  best=TabPFN+CatBoost  TabPFN RMSE=3.6225  (90s)
+  fold 4/15  best=TabPFN  TabPFN RMSE=3.9817  (89s)
+  fold 5/15  best=RandomForest  TabPFN RMSE=4.1404  (89s)
+  fold 6/15  best=RandomForest  TabPFN RMSE=4.3438  (86s)
+  fold 7/15  best=TabPFN+CatBoost  TabPFN RMSE=3.8144  (92s)
+  fold 8/15  best=TabPFN  TabPFN RMSE=4.1348  (92s)
+  fold 9/15  best=RandomForest  TabPFN RMSE=4.4254  (92s)
+  fold 10/15  best=TabPFN+CatBoost  TabPFN RMSE=2.9514  (94s)
+  fold 11/15  best=TabPFN+CatBoost  TabPFN RMSE=3.5709  (89s)
+  fold 12/15  best=LightGBM  TabPFN RMSE=4.7405  (93s)
+  fold 13/15  best=RandomForest  TabPFN RMSE=4.3504  (95s)
+  fold 14/15  best=TabPFN  TabPFN RMSE=3.7051  (100s)
+  fold 15/15  best=RandomForest  TabPFN RMSE=3.8959  (131s)
+
+  -- uci_mat summary (mean over 5x3 folds) --
+                   RMSE             MAE      R2 ROC_AUC  PR_AUC RMSE_gap
+                   mean     std    mean    mean    mean    mean     mean
+Model                                                                   
+TabPFN+CatBoost  3.8831  0.4032  3.0127  0.2627  0.7412  0.5372   0.3801
+RandomForest     3.9466  0.3803  2.9948  0.2394  0.7300  0.5296   0.4129
+TabPFN (P(y<t))  3.9688  0.4310  3.0601  0.2273  0.7563  0.5376   0.4326
+TabPFN           3.9688  0.4310  3.0601  0.2273  0.7479  0.5329   0.4326
+CatBoost         3.9797  0.3798  3.0706  0.2281  0.7230  0.5188   0.3563
+XGBoost          4.0518  0.3349  3.1003  0.2025  0.7285  0.5061   0.3920
+LightGBM         4.0862  0.2904  3.1415  0.1896  0.7281  0.5162   0.3040
+GBM              4.1636  0.3265  3.1612  0.1579  0.6888  0.4701   0.4482
+Ridge            4.4026  0.2529  3.3184  0.0611  0.6631  0.3572   0.4860
+SVR              4.4036  0.3124  3.2804  0.0607  0.6594  0.3472   0.5249
+KNN              4.4686  0.2756  3.3383  0.0329  0.6124  0.2967   0.5267
+
+  uncertainty (target 90%):
+                         Coverage            Width        
+                             mean     std     mean     std
+Method                                                    
+CQR-TabPFN                 0.8979  0.0595  12.6698  0.9681
+Split-conformal CatBoost   0.9030  0.0424  14.0720  1.4060
+TabPFN raw quantiles       0.8920  0.0438  11.8745  0.3994
+
+  significance:
+      Reference              vs  mean RMSE diff  t (corrected)      p  p (Holm)
+TabPFN+CatBoost             SVR         -0.5206        -2.3822 0.0319    0.2211
+TabPFN+CatBoost             KNN         -0.5855        -3.0429 0.0088    0.0789
+TabPFN+CatBoost           Ridge         -0.5195        -2.6421 0.0193    0.1546
+TabPFN+CatBoost    RandomForest         -0.0635        -0.7115 0.4885    0.6009
+TabPFN+CatBoost             GBM         -0.2805        -2.3880 0.0316    0.2211
+TabPFN+CatBoost         XGBoost         -0.1687        -1.4613 0.1660    0.6009
+TabPFN+CatBoost        LightGBM         -0.2031        -1.6549 0.1202    0.6009
+TabPFN+CatBoost        CatBoost         -0.0966        -1.5383 0.1463    0.6009
+TabPFN+CatBoost          TabPFN         -0.0857        -1.3929 0.1854    0.6009
+         TabPFN             SVR         -0.4349        -1.7097 0.1094    0.7657
+         TabPFN             KNN         -0.4998        -2.1414 0.0503    0.4529
+         TabPFN           Ridge         -0.4338        -1.8615 0.0838    0.6704
+         TabPFN    RandomForest          0.0222         0.1623 0.8734    1.0000
+         TabPFN             GBM         -0.1948        -1.2795 0.2215    1.0000
+         TabPFN         XGBoost         -0.0830        -0.5242 0.6084    1.0000
+         TabPFN        LightGBM         -0.1174        -0.7249 0.4805    1.0000
+         TabPFN        CatBoost         -0.0109        -0.0895 0.9300    1.0000
+         TabPFN TabPFN+CatBoost          0.0857         1.3929 0.1854    1.0000
+
+  CatBoost SHAP top-5: {'absences': 1.0004, 'failures': 0.9224, 'goout': 0.3436, 'Medu': 0.3369, 'famsup': 0.3177}  mean fold-to-fold Spearman=0.853
+
+##### uci_por: UCI Student Performance - Portuguese (PT)  n=649  d=43  y[0, 19] mean=11.9
+  fold 1/15  best=TabPFN+CatBoost  TabPFN RMSE=2.7358  (156s)
+  fold 2/15  best=TabPFN+CatBoost  TabPFN RMSE=2.6110  (133s)
+  fold 3/15  best=LightGBM  TabPFN RMSE=3.3042  (132s)
+  fold 4/15  best=TabPFN  TabPFN RMSE=2.4477  (130s)
+  fold 5/15  best=RandomForest  TabPFN RMSE=2.2412  (132s)
+  fold 6/15  best=CatBoost  TabPFN RMSE=2.3932  (160s)
+  fold 7/15  best=CatBoost  TabPFN RMSE=3.0051  (143s)
+  fold 8/15  best=XGBoost  TabPFN RMSE=2.9148  (148s)
+  fold 9/15  best=RandomForest  TabPFN RMSE=2.5585  (154s)
+  fold 10/15  best=TabPFN+CatBoost  TabPFN RMSE=2.4980  (147s)
+  fold 11/15  best=TabPFN+CatBoost  TabPFN RMSE=2.7363  (99s)
+  fold 12/15  best=TabPFN  TabPFN RMSE=3.0604  (101s)
+  fold 13/15  best=TabPFN+CatBoost  TabPFN RMSE=2.1261  (94s)
+  fold 14/15  best=TabPFN+CatBoost  TabPFN RMSE=2.7470  (93s)
+  fold 15/15  best=LightGBM  TabPFN RMSE=2.5367  (93s)
+
+  -- uci_por summary (mean over 5x3 folds) --
+                   RMSE             MAE      R2 ROC_AUC  PR_AUC RMSE_gap
+                   mean     std    mean    mean    mean    mean     mean
+Model                                                                   
+TabPFN+CatBoost  2.6197  0.3176  1.9220  0.3294  0.8298  0.5063   0.4194
+TabPFN           2.6611  0.3173  1.9525  0.3080  0.8288  0.5082   0.4742
+TabPFN (P(y<t))  2.6611  0.3173  1.9525  0.3080  0.8421  0.5144   0.4742
+CatBoost         2.6652  0.3124  1.9621  0.3050  0.8155  0.4918   0.3825
+RandomForest     2.6869  0.3196  1.9854  0.2942  0.8193  0.4804   0.4008
+LightGBM         2.6973  0.3151  1.9931  0.2881  0.8176  0.4622   0.3638
+XGBoost          2.7119  0.3201  2.0124  0.2809  0.8198  0.4553   0.3694
+GBM              2.7319  0.3258  2.0367  0.2696  0.8195  0.4632   0.3571
+Ridge            2.7425  0.2814  1.9870  0.2620  0.8189  0.4738   0.3452
+SVR              2.7564  0.2914  1.9985  0.2554  0.8044  0.4505   0.4361
+KNN              2.9548  0.3316  2.1614  0.1476  0.7636  0.3954   0.4683
+
+  uncertainty (target 90%):
+                         Coverage           Width        
+                             mean     std    mean     std
+Method                                                   
+CQR-TabPFN                 0.9163  0.0292  8.0267  0.6605
+Split-conformal CatBoost   0.9055  0.0403  8.4857  1.1364
+TabPFN raw quantiles       0.8485  0.0306  6.7163  0.2917
+
+  significance:
+      Reference              vs  mean RMSE diff  t (corrected)      p  p (Holm)
+TabPFN+CatBoost             SVR         -0.1367        -3.6227 0.0028    0.0222
+TabPFN+CatBoost             KNN         -0.3351        -6.2227 0.0000    0.0002
+TabPFN+CatBoost           Ridge         -0.1228        -2.9838 0.0099    0.0690
+TabPFN+CatBoost    RandomForest         -0.0672        -1.5981 0.1323    0.1712
+TabPFN+CatBoost             GBM         -0.1122        -2.2342 0.0423    0.1692
+TabPFN+CatBoost         XGBoost         -0.0922        -2.3793 0.0321    0.1606
+TabPFN+CatBoost        LightGBM         -0.0776        -1.8496 0.0856    0.1712
+TabPFN+CatBoost        CatBoost         -0.0455        -2.5991 0.0210    0.1261
+TabPFN+CatBoost          TabPFN         -0.0413        -2.0749 0.0569    0.1707
+         TabPFN             SVR         -0.0953        -2.0038 0.0648    0.4553
+         TabPFN             KNN         -0.2937        -5.1283 0.0002    0.0014
+         TabPFN           Ridge         -0.0814        -1.6403 0.1232    0.7392
+         TabPFN    RandomForest         -0.0258        -0.4640 0.6498    1.0000
+         TabPFN             GBM         -0.0708        -1.2660 0.2262    1.0000
+         TabPFN         XGBoost         -0.0509        -1.1567 0.2667    1.0000
+         TabPFN        LightGBM         -0.0362        -0.7543 0.4632    1.0000
+         TabPFN        CatBoost         -0.0041        -0.1141 0.9108    1.0000
+         TabPFN TabPFN+CatBoost          0.0413         2.0749 0.0569    0.4553
+
+  CatBoost SHAP top-5: {'failures': 0.6462, 'school': 0.3701, 'studytime': 0.2577, 'higher': 0.2224, 'Medu': 0.2151}  mean fold-to-fold Spearman=0.904
+
+##### spf: Student Performance Factors (Kaggle)  n=6607  d=19  y[55, 101] mean=67.2
+  fold 1/15  best=TabPFN  TabPFN RMSE=1.7899  (1328s)
+  fold 2/15  best=Ridge  TabPFN RMSE=1.8721  (1974s)
+  fold 3/15  best=SVR  TabPFN RMSE=1.1348  (2394s)
+  fold 4/15  best=Ridge  TabPFN RMSE=2.3822  (2066s)
+  fold 5/15  best=Ridge  TabPFN RMSE=2.6878  (2149s)
+  fold 6/15  best=Ridge  TabPFN RMSE=2.4120  (2054s)
+  fold 7/15  best=TabPFN  TabPFN RMSE=2.5154  (2054s)
+  fold 8/15  best=SVR  TabPFN RMSE=1.7686  (1824s)
+  fold 9/15  best=TabPFN  TabPFN RMSE=1.7390  (1977s)
+  fold 10/15  best=SVR  TabPFN RMSE=1.6122  (1885s)
+  fold 11/15  best=SVR  TabPFN RMSE=1.6380  (1889s)
+  fold 12/15  best=Ridge  TabPFN RMSE=1.8247  (1963s)
+  fold 13/15  best=Ridge  TabPFN RMSE=2.2200  (2033s)
+  fold 14/15  best=SVR  TabPFN RMSE=1.9222  (1485s)
+  fold 15/15  best=Ridge  TabPFN RMSE=2.5180  (1421s)
+
+  -- spf summary (mean over 5x3 folds) --
+                   RMSE             MAE      R2 ROC_AUC  PR_AUC RMSE_gap
+                   mean     std    mean    mean    mean    mean     mean
+Model                                                                   
+Ridge            1.9964  0.4318  0.4822  0.7330  0.9981  0.9818   0.5019
+SVR              1.9978  0.4366  0.4444  0.7325  0.9982  0.9822   0.5054
+TabPFN           2.0024  0.4326  0.4550  0.7314  0.9980  0.9810   0.5099
+TabPFN (P(y<t))  2.0024  0.4326  0.4550  0.7314  0.9979  0.9789   0.5099
+TabPFN+CatBoost  2.0214  0.4213  0.5254  0.7267  0.9963  0.9740   0.5027
+LightGBM         2.0767  0.4092  0.7035  0.7122  0.9930  0.9553   0.4951
+XGBoost          2.0946  0.4044  0.7240  0.7074  0.9909  0.9512   0.4863
+CatBoost         2.1007  0.3915  0.6487  0.7060  0.9889  0.9524   0.4980
+GBM              2.1010  0.3909  0.7265  0.7061  0.9907  0.9492   0.4893
+RandomForest     2.2973  0.3532  1.1065  0.6499  0.9725  0.8729   0.4402
+KNN              3.0265  0.2696  1.9820  0.3941  0.9030  0.6244   0.4324
+
+  uncertainty (target 90%):
+                         Coverage           Width        
+                             mean     std    mean     std
+Method                                                   
+CQR-TabPFN                 0.9030  0.0141  1.2570  0.0840
+Split-conformal CatBoost   0.9003  0.0132  1.9774  0.1413
+TabPFN raw quantiles       0.9782  0.0062  1.2903  0.0668
+
+  significance:
+Reference              vs  mean RMSE diff  t (corrected)      p  p (Holm)
+    Ridge             SVR         -0.0014        -0.4330 0.6716    0.6716
+    Ridge             KNN         -1.0301       -10.3091 0.0000    0.0000
+    Ridge    RandomForest         -0.3009        -6.2366 0.0000    0.0002
+    Ridge             GBM         -0.1047        -3.1243 0.0075    0.0299
+    Ridge         XGBoost         -0.0982        -3.5881 0.0030    0.0148
+    Ridge        LightGBM         -0.0804        -4.3142 0.0007    0.0050
+    Ridge        CatBoost         -0.1043        -3.7627 0.0021    0.0126
+    Ridge          TabPFN         -0.0061        -1.5837 0.1356    0.2712
+    Ridge TabPFN+CatBoost         -0.0250        -2.9989 0.0096    0.0299
+   TabPFN             SVR          0.0047         0.9590 0.3538    0.3538
+   TabPFN             KNN         -1.0240       -10.2241 0.0000    0.0000
+   TabPFN           Ridge          0.0061         1.5837 0.1356    0.2712
+   TabPFN    RandomForest         -0.2948        -6.0535 0.0000    0.0002
+   TabPFN             GBM         -0.0986        -2.9194 0.0112    0.0448
+   TabPFN         XGBoost         -0.0921        -3.2100 0.0063    0.0315
+   TabPFN        LightGBM         -0.0743        -3.7399 0.0022    0.0154
+   TabPFN        CatBoost         -0.0982        -3.4842 0.0036    0.0219
+   TabPFN TabPFN+CatBoost         -0.0189        -2.1679 0.0479    0.1437
+
+  CatBoost SHAP top-5: {'Attendance': 1.9739, 'Hours_Studied': 1.398, 'Previous_Scores': 0.6112, 'Access_to_Resources': 0.5287, 'Parental_Involvement': 0.5272}  mean fold-to-fold Spearman=0.993
+
+==== mean RMSE rank across datasets ====
+Model
+TabPFN              2.25
+TabPFN+CatBoost     2.50
+Ridge               4.75
+XGBoost             5.50
+CatBoost            5.50
+SVR                 5.75
+LightGBM            5.75
+RandomForest        6.00
+GBM                 7.00
+KNN                10.00
+
+Total 552.4 min

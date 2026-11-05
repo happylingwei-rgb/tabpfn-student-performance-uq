@@ -1,0 +1,91 @@
+dataset=math path=C:\Users\User\Desktop\11.2 Predicting student academic performance using\data\student_performance_math\exams.csv
+args={"dataset": "math", "data_path": "None", "folds": "10", "reps": "30", "n_boot": "1000", "tabpfn_estimators": "32", "shap_estimators": "8", "tabpfn_grid": "False", "no_grid": "False", "skip_size": "False", "skip_shap": "False", "quick": "False"}
+
+X shape=(1000, 7)
+                             count   mean    std  min    25%    50%    75%  max
+gender_encoded              1000.0  0.492  0.500  0.0  0.000  0.000  1.000  1.0
+race/ethnicity_encoded      1000.0  2.187  1.144  0.0  1.000  2.000  3.000  4.0
+parental education_encoded  1000.0  2.070  1.490  0.0  1.000  2.000  3.000  5.0
+lunch_encoded               1000.0  0.660  0.474  0.0  0.000  1.000  1.000  1.0
+test preparation_encoded    1000.0  0.344  0.475  0.0  0.000  0.000  1.000  1.0
+reading score               1000.0  0.605  0.188  0.0  0.480  0.607  0.733  1.0
+writing score               1000.0  0.637  0.177  0.0  0.518  0.647  0.765  1.0
+
+count    1000.000
+mean        0.621
+std         0.179
+min         0.000
+25%         0.506
+50%         0.624
+75%         0.756
+max         1.000
+
+VIF (Table 2):
+                   Feature     VIF
+             writing score 13.3531
+             reading score 11.5947
+  test preparation_encoded  1.2941
+            gender_encoded  1.1777
+             lunch_encoded  1.1178
+parental education_encoded  1.0713
+    race/ethnicity_encoded  1.0517
+
+=== [1] Train/test split + hyperparameter tuning ===
+  train=800  test=200
+  SVR          {'C': 1, 'kernel': 'linear'}  (6.1s)
+  KNN          {'n_neighbors': 15}  (0.3s)
+  Ridge        {'alpha': 0.01}  (0.3s)
+  RandomForest {'max_depth': 10, 'min_samples_split': 12, 'n_estimators': 300}  (41.5s)
+  GBM          {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 200}  (37.2s)
+  XGBoost      {'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 100, 'subsample': 1.0}  (37.0s)
+  LightGBM     {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 200, 'num_leaves': 10}  (9.5s)
+  TabPFN       n_estimators=32 (S1 Table optimum; use --tabpfn-grid to search)
+
+=== [2] Test-set performance (Table 3 / Table 5) ===
+  SVR          RMSE=0.0692 (0.06332572680788841, 0.07487935870416385)  MAE=0.0570  R2=0.8576
+  KNN          RMSE=0.1247 (0.11070180786852427, 0.13782899639275883)  MAE=0.0962  R2=0.5367
+  Ridge        RMSE=0.0693 (0.06343675129728478, 0.07497041692171456)  MAE=0.0571  R2=0.8571
+  RandomForest RMSE=0.0735 (0.06643807863950713, 0.08035231452746106)  MAE=0.0590  R2=0.8390
+  GBM          RMSE=0.0729 (0.06598680796991511, 0.07976893012778917)  MAE=0.0592  R2=0.8415
+  XGBoost      RMSE=0.0725 (0.06587505964169596, 0.07907557393674769)  MAE=0.0589  R2=0.8437
+  LightGBM     RMSE=0.0704 (0.06399668188424229, 0.0764104753188757)  MAE=0.0574  R2=0.8523
+  TabPFN       RMSE=0.0685 (0.06262196181868272, 0.07417390063229785)  MAE=0.0564  R2=0.8601
+
+=== [3] Paired t-test / Wilcoxon / Cohen's d on 10-fold CV RMSE (Table 4 / S3) ===
+  TabPFN vs SVR          diff=+0.0008 t=-1.726 p=0.1185 d=-0.575 | W=14 p=0.1934
+  TabPFN vs KNN          diff=+0.0564 t=-15.650 p=7.8e-08 d=-5.217 | W=0 p=0.001953
+  TabPFN vs Ridge        diff=+0.0007 t=-1.549 p=0.1559 d=-0.516 | W=15 p=0.2324
+  TabPFN vs RandomForest diff=+0.0065 t=-7.516 p=3.633e-05 d=-2.505 | W=0 p=0.001953
+  TabPFN vs GBM          diff=+0.0039 t=-4.888 p=0.000862 d=-1.629 | W=1 p=0.003906
+  TabPFN vs XGBoost      diff=+0.0039 t=-4.873 p=0.0008797 d=-1.624 | W=1 p=0.003906
+  TabPFN vs LightGBM     diff=+0.0043 t=-5.482 p=0.0003894 d=-1.827 | W=1 p=0.003906
+
+=== [4] Sample-size experiment (Fig 5) ===
+  n=500
+                  R2            RMSE        
+                mean     std    mean     std
+Model                                       
+RandomForest  0.8358  0.0226  0.0730  0.0048
+TabPFN        0.8750  0.0134  0.0637  0.0025
+XGBoost       0.8503  0.0208  0.0697  0.0045
+
+=== [5] SHAP (remove-and-recontextualize, exact, n_estimators=8) ===
+    coalition 16/127  (233s)
+    coalition 32/127  (498s)
+    coalition 48/127  (773s)
+    coalition 64/127  (1095s)
+    coalition 80/127  (1434s)
+    coalition 96/127  (1779s)
+    coalition 112/127  (2165s)
+    coalition 127/127  (2556s)
+                   Feature  mean|SHAP|  CI low  CI high
+             reading score      0.0601  0.0543   0.0657
+             writing score      0.0596  0.0546   0.0647
+            gender_encoded      0.0583  0.0564   0.0604
+             lunch_encoded      0.0348  0.0333   0.0364
+    race/ethnicity_encoded      0.0172  0.0152   0.0195
+parental education_encoded      0.0098  0.0090   0.0106
+  test preparation_encoded      0.0067  0.0061   0.0074
+  efficiency check: max|base+sum(phi) - f(x)| = 1.11e-16
+
+Done in 83.5 min. Results in C:\Users\User\Desktop\11.2 Predicting student academic performance using\results\math

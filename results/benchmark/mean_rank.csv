@@ -1,0 +1,11 @@
+Model,mean rank
+TabPFN,2.25
+TabPFN+CatBoost,2.5
+Ridge,4.75
+XGBoost,5.5
+CatBoost,5.5
+SVR,5.75
+LightGBM,5.75
+RandomForest,6.0
+GBM,7.0
+KNN,10.0
