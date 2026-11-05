@@ -9,7 +9,7 @@ The study re-examines [Yin (2026), PLOS One 21(9): e0328634](https://doi.org/10.
 - gender error gaps;
 - the stability of SHAP explanations across folds.
 
-We also propose a guaranteed, group-fair early-warning method built on TabPFN's predictive distribution. It uses group-conditional (Mondrian) CQR intervals and recall-guaranteed conformal at-risk screening. Under exchangeability, the method guarantees interval coverage of at least 1 − α and at-risk recall of at least 1 − α_r within every gender group, in finite samples.
+We also propose **FairWarn-PFN** (Group-Fair Guaranteed Early Warning with Prior-data Fitted Networks), an early-warning model built on TabPFN's predictive distribution. It uses group-conditional (Mondrian) CQR intervals and recall-guaranteed conformal at-risk screening. Under exchangeability, the method guarantees interval coverage of at least 1 − α and at-risk recall of at least 1 − α_r within every gender group, in finite samples.
 
 ## Datasets
 
@@ -40,7 +40,7 @@ TabPFN is run with the openly available **v2** weights (`ModelVersion.V2`), so n
 | `python reproduce.py --dataset math` | Replicates the original protocol on D1. This covers an 80/20 split, 10-fold grid search over the original S1 search spaces, bootstrap CIs, paired *t*/Wilcoxon tests, the sample-size experiment and exact TabPFN Shapley values (remove-and-recontextualize, all 2^7 − 1 subsets). | `results/math/` |
 | `python benchmark.py` | Runs the main benchmark: 4 datasets × repeated 5-fold CV (3 repeats) × 10 models, Nadeau–Bengio corrected *t*-tests with Holm adjustment, CQR intervals, at-risk ROC/PR-AUC, gender RMSE gaps and CatBoost SHAP stability. On a CPU this takes about 9 hours. | `results/benchmark/<dataset>/` |
 | `python benchmark.py --quick` | Smoke test (2 folds, 1 repeat). | `results/benchmark_quick/` |
-| `python guarantee.py` | Runs the proposed method. It uses the same folds and calibration split as `benchmark.py` and compares group-conditional CQR with marginal CQR and split-conformal CatBoost. It also compares conformal screening (marginal and per-group, α_r ∈ {0.10, 0.20}, TabPFN P(y < c) and CatBoost scores) against naive thresholds. Per-student predictions are saved. On a CPU this takes about 4 hours. | `results/guarantee/<dataset>/` |
+| `python guarantee.py` | Runs FairWarn-PFN. It uses the same folds and calibration split as `benchmark.py` and compares group-conditional CQR with marginal CQR and split-conformal CatBoost. It also compares conformal screening (marginal and per-group, α_r ∈ {0.10, 0.20}, TabPFN P(y < c) and CatBoost scores) against naive thresholds. Per-student predictions are saved. On a CPU this takes about 4 hours. | `results/guarantee/<dataset>/` |
 
 `reproduce.py --dataset sap4000` expects `data/SAP-4000.csv`. That file is the main dataset of the original study, and we could not find it publicly.
 
@@ -51,9 +51,9 @@ TabPFN is run with the openly available **v2** weights (`ModelVersion.V2`), so n
 - **At-risk students (bottom 20%).** On the two Portuguese datasets, the probability P(y < c) taken from TabPFN's predictive distribution gives the highest ROC-AUC (0.756 and 0.842).
 - **SHAP stability.** The mean fold-to-fold Spearman correlation of feature rankings ranges from 0.853 (D2) to 0.993 (D4).
 
-## Proposed method (`results/guarantee/`)
+## FairWarn-PFN (`results/guarantee/`)
 
-- **Per-group coverage.** Group-conditional CQR-TabPFN covers 0.898–0.923 in each gender group, and no group is significantly below 0.90. Split-conformal CatBoost under-covers women on D4 (0.890, one-sided *p* = 0.019).
+- **Per-group coverage.** FairWarn-PFN's group-conditional intervals cover 0.898–0.923 in each gender group, and no group is significantly below 0.90. Split-conformal CatBoost under-covers women on D4 (0.890, one-sided *p* = 0.019).
 - **Per-group recall.** None of the 64 group recalls of the conformal screening rules is significantly below its target. Naive thresholds (ŷ < c) catch only 37%–50% of at-risk students on D2 and D3.
 - **Efficiency.** On D2–D4, TabPFN's P(y < c) needs a lower flag rate than CatBoost to meet the same guarantee in all 12 comparisons. The reduction reaches up to 20% of flagged students. On D1 the two scores are on par. On small calibration sets, per-group screening becomes conservative: with fewer than 1/α_r − 1 at-risk calibration students in a group, every student in that group is flagged.
 
