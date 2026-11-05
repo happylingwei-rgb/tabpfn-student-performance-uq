@@ -1,0 +1,144 @@
+
+==== guarantee 2026-11-05 09:52  args={"datasets": ["math", "uci_mat", "uci_por", "spf"], "folds": 5, "repeats": 3, "tabpfn_estimators": 8, "quick": false}
+
+##### math: Students Performance in Exams (US, Kaggle)  n=1000
+  fold 1/15  calib n=160 at-risk=25  (36s)
+  fold 2/15  calib n=160 at-risk=34  (28s)
+  fold 3/15  calib n=160 at-risk=27  (29s)
+  fold 4/15  calib n=160 at-risk=25  (29s)
+  fold 5/15  calib n=160 at-risk=31  (29s)
+  fold 6/15  calib n=160 at-risk=33  (31s)
+  fold 7/15  calib n=160 at-risk=32  (34s)
+  fold 8/15  calib n=160 at-risk=25  (36s)
+  fold 9/15  calib n=160 at-risk=35  (39s)
+  fold 10/15  calib n=160 at-risk=28  (31s)
+  fold 11/15  calib n=160 at-risk=25  (29s)
+  fold 12/15  calib n=160 at-risk=34  (28s)
+  fold 13/15  calib n=160 at-risk=33  (29s)
+  fold 14/15  calib n=160 at-risk=31  (28s)
+  fold 15/15  calib n=160 at-risk=26  (28s)
+                                Coverage   Width  Coverage_M  Coverage_F  Width_M  Width_F  CoverageGap
+Method                                                                                                 
+CQR-TabPFN (marginal)             0.9053  0.2154      0.9146      0.8952   0.2132   0.2177       0.0380
+Mondrian CQR-TabPFN (proposed)    0.9107  0.2197      0.9227      0.8984   0.2210   0.2187       0.0527
+Split-conformal CatBoost          0.9027  0.2291      0.8974      0.9078   0.2291   0.2291       0.0243
+                                       FlagRate  Recall  Precision  Recall_M  Recall_F  RecallGap
+Rule                                                                                             
+CatBoost: conformal group (a=0.1)        0.4097  0.9202     0.4846    0.9315    0.9090     0.0907
+CatBoost: conformal group (a=0.2)        0.2273  0.8158     0.6974    0.8281    0.7914     0.1665
+CatBoost: conformal marginal (a=0.1)     0.2723  0.8895     0.6378    0.8870    0.8892     0.0679
+CatBoost: conformal marginal (a=0.2)     0.2103  0.8018     0.7378    0.7903    0.8079     0.0833
+CatBoost: y_hat < c                      0.2050  0.7746     0.7325    0.7424    0.7891     0.0864
+TabPFN pi: conformal group (a=0.1)       0.4077  0.9391     0.5021    0.9364    0.9349     0.0934
+TabPFN pi: conformal group (a=0.2)       0.2183  0.8093     0.7210    0.8225    0.7982     0.1471
+TabPFN pi: conformal marginal (a=0.1)    0.2800  0.9226     0.6387    0.9072    0.9284     0.0778
+TabPFN pi: conformal marginal (a=0.2)    0.2083  0.7965     0.7442    0.7805    0.8067     0.0934
+TabPFN: pi >= 0.5                        0.2050  0.7969     0.7545    0.7757    0.8058     0.0870
+TabPFN: y_hat < c                        0.2083  0.8093     0.7548    0.7870    0.8195     0.0683
+
+##### uci_mat: UCI Student Performance - Mathematics (PT)  n=395
+  fold 1/15  calib n=64 at-risk=6  (46s)
+  fold 2/15  calib n=64 at-risk=12  (40s)
+  fold 3/15  calib n=64 at-risk=15  (45s)
+  fold 4/15  calib n=64 at-risk=13  (39s)
+  fold 5/15  calib n=64 at-risk=12  (39s)
+  fold 6/15  calib n=64 at-risk=11  (43s)
+  fold 7/15  calib n=64 at-risk=10  (42s)
+  fold 8/15  calib n=64 at-risk=12  (41s)
+  fold 9/15  calib n=64 at-risk=10  (42s)
+  fold 10/15  calib n=64 at-risk=10  (41s)
+  fold 11/15  calib n=64 at-risk=8  (45s)
+  fold 12/15  calib n=64 at-risk=9  (42s)
+  fold 13/15  calib n=64 at-risk=12  (43s)
+  fold 14/15  calib n=64 at-risk=12  (43s)
+  fold 15/15  calib n=64 at-risk=11  (43s)
+                                Coverage    Width  Coverage_M  Coverage_F  Width_M  Width_F  CoverageGap
+Method                                                                                                  
+CQR-TabPFN (marginal)             0.8979  12.6698      0.8997      0.8994  12.4390  12.8880       0.0642
+Mondrian CQR-TabPFN (proposed)    0.9114  13.3834      0.9099      0.9110  13.2798  13.3026       0.0776
+Split-conformal CatBoost          0.9030  14.0720      0.9259      0.8840  14.0720  14.0720       0.0514
+                                       FlagRate  Recall  Precision  Recall_M  Recall_F  RecallGap
+Rule                                                                                             
+CatBoost: conformal group (a=0.1)        0.9932  1.0000     0.1785    1.0000    1.0000     0.0000
+CatBoost: conformal group (a=0.2)        0.7333  0.8632     0.2087    0.8371    0.8869     0.1146
+CatBoost: conformal marginal (a=0.1)     0.8042  0.8909     0.1953    0.8982    0.8943     0.0742
+CatBoost: conformal marginal (a=0.2)     0.6684  0.8070     0.2145    0.8215    0.8067     0.1326
+CatBoost: y_hat < c                      0.1359  0.4067     0.5193    0.4737    0.3748     0.1629
+TabPFN pi: conformal group (a=0.1)       0.9857  0.9897     0.1781    1.0000    0.9852     0.0148
+TabPFN pi: conformal group (a=0.2)       0.6194  0.7998     0.2352    0.7897    0.8250     0.2053
+TabPFN pi: conformal marginal (a=0.1)    0.7435  0.8805     0.2142    0.9238    0.8606     0.0860
+TabPFN pi: conformal marginal (a=0.2)    0.5907  0.7975     0.2484    0.8460    0.7776     0.1497
+TabPFN: pi >= 0.5                        0.1072  0.3655     0.6180    0.4408    0.3321     0.2153
+TabPFN: y_hat < c                        0.1333  0.3840     0.5194    0.4408    0.3608     0.2170
+
+##### uci_por: UCI Student Performance - Portuguese (PT)  n=649
+  fold 1/15  calib n=104 at-risk=10  (67s)
+  fold 2/15  calib n=104 at-risk=21  (64s)
+  fold 3/15  calib n=104 at-risk=11  (66s)
+  fold 4/15  calib n=104 at-risk=19  (67s)
+  fold 5/15  calib n=104 at-risk=17  (66s)
+  fold 6/15  calib n=104 at-risk=14  (66s)
+  fold 7/15  calib n=104 at-risk=14  (68s)
+  fold 8/15  calib n=104 at-risk=20  (70s)
+  fold 9/15  calib n=104 at-risk=16  (77s)
+  fold 10/15  calib n=104 at-risk=16  (64s)
+  fold 11/15  calib n=104 at-risk=20  (64s)
+  fold 12/15  calib n=104 at-risk=19  (63s)
+  fold 13/15  calib n=104 at-risk=18  (73s)
+  fold 14/15  calib n=104 at-risk=18  (67s)
+  fold 15/15  calib n=104 at-risk=12  (62s)
+                                Coverage   Width  Coverage_M  Coverage_F  Width_M  Width_F  CoverageGap
+Method                                                                                                 
+CQR-TabPFN (marginal)             0.9163  8.0267      0.9100      0.9214   8.1128   7.9826       0.0334
+Mondrian CQR-TabPFN (proposed)    0.9163  8.3250      0.9201      0.9127   8.9937   7.7977       0.0592
+Split-conformal CatBoost          0.9055  8.4857      0.8965      0.9118   8.4857   8.4857       0.0382
+                                       FlagRate  Recall  Precision  Recall_M  Recall_F  RecallGap
+Rule                                                                                             
+CatBoost: conformal group (a=0.1)        0.8825  0.9855     0.1763    0.9875    0.9842     0.0283
+CatBoost: conformal group (a=0.2)        0.5655  0.8673     0.2462    0.8964    0.8589     0.1494
+CatBoost: conformal marginal (a=0.1)     0.7120  0.9370     0.2120    0.9525    0.9420     0.0740
+CatBoost: conformal marginal (a=0.2)     0.5156  0.8700     0.2735    0.9202    0.8580     0.1457
+CatBoost: y_hat < c                      0.1674  0.4967     0.4584    0.5571    0.4493     0.2283
+TabPFN pi: conformal group (a=0.1)       0.8625  0.9729     0.1791    0.9897    0.9584     0.0518
+TabPFN pi: conformal group (a=0.2)       0.4534  0.8259     0.2920    0.8282    0.8505     0.1968
+TabPFN pi: conformal marginal (a=0.1)    0.6216  0.9138     0.2432    0.9551    0.8943     0.1126
+TabPFN pi: conformal marginal (a=0.2)    0.4391  0.8317     0.3089    0.8487    0.8335     0.1411
+TabPFN: pi >= 0.5                        0.1187  0.4172     0.5486    0.4516    0.4215     0.1753
+TabPFN: y_hat < c                        0.1340  0.4623     0.5377    0.4902    0.4700     0.1809
+
+##### spf: Student Performance Factors (Kaggle)  n=6607
+  fold 1/15  calib n=1057 at-risk=155  (801s)
+  fold 2/15  calib n=1057 at-risk=150  (788s)
+  fold 3/15  calib n=1058 at-risk=160  (814s)
+  fold 4/15  calib n=1058 at-risk=144  (860s)
+  fold 5/15  calib n=1058 at-risk=141  (861s)
+  fold 6/15  calib n=1057 at-risk=136  (813s)
+  fold 7/15  calib n=1057 at-risk=149  (749s)
+  fold 8/15  calib n=1058 at-risk=169  (741s)
+  fold 9/15  calib n=1058 at-risk=136  (744s)
+  fold 10/15  calib n=1058 at-risk=151  (743s)
+  fold 11/15  calib n=1057 at-risk=159  (744s)
+  fold 12/15  calib n=1057 at-risk=144  (739s)
+  fold 13/15  calib n=1058 at-risk=140  (747s)
+  fold 14/15  calib n=1058 at-risk=161  (747s)
+  fold 15/15  calib n=1058 at-risk=155  (752s)
+                                Coverage   Width  Coverage_M  Coverage_F  Width_M  Width_F  CoverageGap
+Method                                                                                                 
+CQR-TabPFN (marginal)             0.9030  1.2570      0.9014      0.9051   1.2408   1.2791       0.0104
+Mondrian CQR-TabPFN (proposed)    0.9027  1.2574      0.9052      0.8992   1.2423   1.2782       0.0211
+Split-conformal CatBoost          0.9003  1.9774      0.9075      0.8904   1.9774   1.9774       0.0202
+                                       FlagRate  Recall  Precision  Recall_M  Recall_F  RecallGap
+Rule                                                                                             
+CatBoost: conformal group (a=0.1)        0.1519  0.9102     0.8670    0.9180    0.8992     0.0398
+CatBoost: conformal group (a=0.2)        0.1219  0.8076     0.9542    0.8140    0.7986     0.0692
+CatBoost: conformal marginal (a=0.1)     0.1478  0.9029     0.8827    0.9088    0.8943     0.0323
+CatBoost: conformal marginal (a=0.2)     0.1216  0.8101     0.9588    0.8043    0.8179     0.0352
+CatBoost: y_hat < c                      0.1657  0.9396     0.8167    0.9430    0.9346     0.0297
+TabPFN pi: conformal group (a=0.1)       0.1343  0.9093     0.9748    0.9038    0.9176     0.0463
+TabPFN pi: conformal group (a=0.2)       0.1191  0.8115     0.9798    0.8083    0.8161     0.0723
+TabPFN pi: conformal marginal (a=0.1)    0.1338  0.9072     0.9754    0.9111    0.9028     0.0339
+TabPFN pi: conformal marginal (a=0.2)    0.1189  0.8095     0.9797    0.8125    0.8063     0.0309
+TabPFN: pi >= 0.5                        0.1773  1.0000     0.8124    1.0000    1.0000     0.0000
+TabPFN: y_hat < c                        0.1723  0.9986     0.8350    0.9988    0.9984     0.0028
+
+Total 229.1 min
