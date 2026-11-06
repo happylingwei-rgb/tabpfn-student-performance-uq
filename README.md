@@ -1,6 +1,6 @@
-# Beyond point accuracy: TabPFN for student performance prediction with uncertainty quantification
+# FairWarn-PFN: group-guaranteed early warning of student performance with TabPFN and conformal prediction
 
-Code and results for the manuscript *Beyond point accuracy: A multi-dataset, uncertainty-aware evaluation of tabular foundation models for student performance prediction and at-risk identification* (Ling-Wei Lin, National Taichung University of Science and Technology).
+Code and results for the manuscript *Group-guaranteed early warning of student academic performance with tabular foundation models and conformal prediction* (Ling-Wei Lin, National Taichung University of Science and Technology).
 
 The study re-examines [Yin (2026), PLOS One 21(9): e0328634](https://doi.org/10.1371/journal.pone.0328634), which reported that TabPFN outperforms classical machine-learning models for predicting secondary-school exam scores. Compared with that study, we evaluate on four public datasets with leakage-free preprocessing and corrected statistical tests. We also look beyond point accuracy:
 
