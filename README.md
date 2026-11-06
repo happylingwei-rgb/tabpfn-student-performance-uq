@@ -9,7 +9,7 @@ The study re-examines [Yin (2026), PLOS One 21(9): e0328634](https://doi.org/10.
 - gender error gaps;
 - the stability of SHAP explanations across folds.
 
-We also propose **FairWarn-PFN** (Group-Fair Guaranteed Early Warning with Prior-data Fitted Networks), an early-warning model built on TabPFN's predictive distribution. It uses group-conditional (Mondrian) CQR intervals and recall-guaranteed conformal at-risk screening. Under exchangeability, the method guarantees interval coverage of at least 1 − α and at-risk recall of at least 1 − α_r within every gender group, in finite samples.
+We also propose **FairWarn-PFN** (Group-Fair Guaranteed Early Warning with Prior-data Fitted Networks), an early-warning model built on TabPFN's predictive distribution. It uses group-conditional (Mondrian) CQR intervals and recall-guaranteed conformal at-risk screening. Under exchangeability, the method guarantees interval coverage of at least 1 − α and at-risk recall of at least 1 − α_r within every group, in finite samples. Groups are defined by gender and by a socio-economic or location attribute (D1 lunch type, D2/D3 home address, D4 family income). For small groups we add a cross-conformal variant, **FairWarn-PFN-CV+**.
 
 ## Datasets
 
@@ -41,6 +41,7 @@ TabPFN is run with the openly available **v2** weights (`ModelVersion.V2`), so n
 | `python benchmark.py` | Runs the main benchmark: 4 datasets × repeated 5-fold CV (3 repeats) × 10 models, Nadeau–Bengio corrected *t*-tests with Holm adjustment, CQR intervals, at-risk ROC/PR-AUC, gender RMSE gaps and CatBoost SHAP stability. On a CPU this takes about 9 hours. | `results/benchmark/<dataset>/` |
 | `python benchmark.py --quick` | Smoke test (2 folds, 1 repeat). | `results/benchmark_quick/` |
 | `python guarantee.py` | Runs FairWarn-PFN. It uses the same folds and calibration split as `benchmark.py` and compares group-conditional CQR with marginal CQR and split-conformal CatBoost. It also compares conformal screening (marginal and per-group, α_r ∈ {0.10, 0.20}, TabPFN P(y < c) and CatBoost scores) against naive thresholds. Per-student predictions are saved. On a CPU this takes about 4 hours. | `results/guarantee/<dataset>/` |
+| `python extensions.py` | Extends FairWarn-PFN on the same folds: a second group attribute (socio-economic or location), fairness baselines (Hardt et al. equal-opportunity post-processing via fairlearn's `ThresholdOptimizer`, and per-group empirical quantiles without the finite-sample correction), and FairWarn-PFN-CV+ (cross-conformal screening with 5 inner folds, D1–D3 only). On a CPU this takes about 8 hours. | `results/extensions/<dataset>/` |
 
 `reproduce.py --dataset sap4000` expects `data/SAP-4000.csv`. That file is the main dataset of the original study, and we could not find it publicly.
 
@@ -56,6 +57,13 @@ TabPFN is run with the openly available **v2** weights (`ModelVersion.V2`), so n
 - **Per-group coverage.** FairWarn-PFN's group-conditional intervals cover 0.898–0.923 in each gender group, and no group is significantly below 0.90. Split-conformal CatBoost under-covers women on D4 (0.890, one-sided *p* = 0.019).
 - **Per-group recall.** None of the 64 group recalls of the conformal screening rules is significantly below its target. Naive thresholds (ŷ < c) catch only 37%–50% of at-risk students on D2 and D3.
 - **Efficiency.** On D2–D4, TabPFN's P(y < c) needs a lower flag rate than CatBoost to meet the same guarantee in all 12 comparisons. The reduction reaches up to 20% of flagged students. On D1 the two scores are on par. On small calibration sets, per-group screening becomes conservative: with fewer than 1/α_r − 1 at-risk calibration students in a group, every student in that group is flagged.
+
+## Extensions (`results/extensions/`)
+
+- **Second group attribute.** Across all 17 groups (gender plus lunch type, address or income), FairWarn-PFN's coverage is 0.898–0.937, and no group is significantly below 0.90. Split-conformal CatBoost under-covers the high-income group on D4 (0.881, *p* = 0.001).
+- **Hidden under-recall.** On D1, marginal conformal screening meets the overall recall target (0.923), but recall in the standard-lunch group is only 0.849 at α_r = 0.10 and 0.638 at α_r = 0.20 (both significant). FairWarn-PFN raises these to 0.905 and 0.852. None of FairWarn-PFN's 34 group recalls is significantly below target.
+- **Fairness baselines.** Hardt equal-opportunity post-processing equalises recall across groups, but it does not control the recall level. Overall recall is 0.58–0.63 on D2 and 0.74–0.75 on D3; on D4 it flags more students than FairWarn-PFN. Removing the finite-sample correction leaves 15 of 34 group recalls significantly below target.
+- **FairWarn-PFN-CV+.** At α_r = 0.10, it lowers the flag rate on D1–D3 by 21.5%–39.3% (Wilcoxon *p* ≤ 0.011); for example, D2 by gender goes from 0.986 to 0.712. None of its 24 group recalls is significantly below target. Its worst-case theoretical bound is weaker (about 1 − 2α_r; Barber et al., 2021), so it is evaluated empirically.
 
 ## Licence
 

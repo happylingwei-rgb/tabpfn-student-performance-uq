@@ -1,0 +1,399 @@
+
+==== extensions 2026-11-06 08:58  args={"datasets": ["uci_mat", "uci_por", "math", "spf"], "folds": 5, "repeats": 3, "tabpfn_estimators": 8, "no_cv": false, "quick": false}
+
+##### uci_mat: UCI Student Performance - Mathematics (PT)  n=395  attrs=['gender', 'address']  address counts={'urban': 307, 'rural': 88}  CV+=True
+  fold 1/15  (254s)
+  fold 2/15  (239s)
+  fold 3/15  (240s)
+  fold 4/15  (233s)
+  fold 5/15  (265s)
+  fold 6/15  (300s)
+  fold 7/15  (302s)
+  fold 8/15  (333s)
+  fold 9/15  (225s)
+  fold 10/15  (232s)
+  fold 11/15  (231s)
+  fold 12/15  (243s)
+  fold 13/15  (257s)
+  fold 14/15  (248s)
+  fold 15/15  (240s)
+                                        Coverage    Width
+attr    Method                   group                   
+address CQR-TabPFN (marginal)    ALL      0.8979  12.6698
+                                 rural    0.8656  11.9918
+                                 urban    0.9070  12.8739
+        FairWarn-PFN             ALL      0.9173  13.4028
+                                 rural    0.9368  14.9728
+                                 urban    0.9102  12.9342
+        Split-conformal CatBoost ALL      0.9030  14.0720
+                                 rural    0.8925  14.0720
+                                 urban    0.9068  14.0720
+gender  CQR-TabPFN (marginal)    ALL      0.8979  12.6698
+                                 F        0.8994  12.8880
+                                 M        0.8997  12.4390
+        FairWarn-PFN             ALL      0.9114  13.3834
+                                 F        0.9110  13.3026
+                                 M        0.9099  13.2798
+        Split-conformal CatBoost ALL      0.9030  14.0720
+                                 F        0.8840  14.0720
+                                 M        0.9259  14.0720
+                                                          Recall  FlagRate  Precision
+attr    Rule                               alpha_r group                             
+address FairWarn-PFN                        0.1    ALL    0.9856    0.9570     0.1842
+                                                   rural  1.0000    1.0000        NaN
+                                                   urban  0.9773    0.9431        NaN
+                                            0.2    ALL    0.8002    0.6219     0.2413
+                                                   rural  0.8267    0.7452        NaN
+                                                   urban  0.7754    0.5842        NaN
+        FairWarn-PFN-CV+                    0.1    ALL    0.9216    0.7511     0.2178
+                                                   rural  0.9311    0.8582        NaN
+                                                   urban  0.9118    0.7220        NaN
+                                            0.2    ALL    0.8116    0.5730     0.2474
+                                                   rural  0.8022    0.6144        NaN
+                                                   urban  0.8052    0.5615        NaN
+        Hardt EO (TabPFN pi)               -1.0    ALL    0.5769    0.3797     0.3089
+                                                   rural  0.5600    0.3973        NaN
+                                                   urban  0.5943    0.3761        NaN
+        Marginal conformal (TabPFN pi)      0.1    ALL    0.8805    0.7435     0.2142
+                                                   rural  0.8733    0.7676        NaN
+                                                   urban  0.8810    0.7369        NaN
+                                            0.2    ALL    0.7975    0.5907     0.2484
+                                                   rural  0.7800    0.6145        NaN
+                                                   urban  0.8004    0.5845        NaN
+        Plug-in group quantile (TabPFN pi)  0.1    ALL    0.6903    0.4785     0.2946
+                                                   rural  0.6256    0.4334        NaN
+                                                   urban  0.7347    0.4952        NaN
+                                            0.2    ALL    0.6334    0.4076     0.3391
+                                                   rural  0.5956    0.3917        NaN
+                                                   urban  0.6600    0.4152        NaN
+        TabPFN: y_hat < c                  -1.0    ALL    0.3840    0.1333     0.5194
+                                                   rural  0.4011    0.1730        NaN
+                                                   urban  0.3787    0.1219        NaN
+gender  FairWarn-PFN                        0.1    ALL    0.9897    0.9857     0.1781
+                                                   F      0.9852    0.9769        NaN
+                                                   M      1.0000    1.0000        NaN
+                                            0.2    ALL    0.7998    0.6194     0.2352
+                                                   F      0.8250    0.7049        NaN
+                                                   M      0.7897    0.5303        NaN
+        FairWarn-PFN-CV+                    0.1    ALL    0.8957    0.7122     0.2232
+                                                   F      0.8980    0.8094        NaN
+                                                   M      0.9099    0.6118        NaN
+                                            0.2    ALL    0.8049    0.5485     0.2589
+                                                   F      0.8027    0.6419        NaN
+                                                   M      0.8232    0.4510        NaN
+        Hardt EO (TabPFN pi)               -1.0    ALL    0.6333    0.3873     0.3197
+                                                   F      0.6618    0.4850        NaN
+                                                   M      0.5819    0.2675        NaN
+        Marginal conformal (TabPFN pi)      0.1    ALL    0.8805    0.7435     0.2142
+                                                   F      0.8606    0.7559        NaN
+                                                   M      0.9238    0.7284        NaN
+                                            0.2    ALL    0.7975    0.5907     0.2484
+                                                   F      0.7776    0.6159        NaN
+                                                   M      0.8460    0.5627        NaN
+        Plug-in group quantile (TabPFN pi)  0.1    ALL    0.7091    0.4557     0.3177
+                                                   F      0.7434    0.5762        NaN
+                                                   M      0.6663    0.3225        NaN
+                                            0.2    ALL    0.6762    0.4017     0.3331
+                                                   F      0.7086    0.5192        NaN
+                                                   M      0.6419    0.2729        NaN
+        TabPFN: y_hat < c                  -1.0    ALL    0.3840    0.1333     0.5194
+                                                   F      0.3608    0.1444        NaN
+                                                   M      0.4408    0.1210        NaN
+
+##### uci_por: UCI Student Performance - Portuguese (PT)  n=649  attrs=['gender', 'address']  address counts={'urban': 452, 'rural': 197}  CV+=True
+  fold 1/15  (395s)
+  fold 2/15  (440s)
+  fold 3/15  (345s)
+  fold 4/15  (263s)
+  fold 5/15  (263s)
+  fold 6/15  (264s)
+  fold 7/15  (267s)
+  fold 8/15  (269s)
+  fold 9/15  (270s)
+  fold 10/15  (269s)
+  fold 11/15  (270s)
+  fold 12/15  (271s)
+  fold 13/15  (268s)
+  fold 14/15  (264s)
+  fold 15/15  (263s)
+                                        Coverage    Width
+attr    Method                   group                   
+address CQR-TabPFN (marginal)    ALL      0.9163   8.0267
+                                 rural    0.9073   8.5932
+                                 urban    0.9201   7.7805
+        FairWarn-PFN             ALL      0.9179   9.0857
+                                 rural    0.9180  11.6325
+                                 urban    0.9183   7.9411
+        Split-conformal CatBoost ALL      0.9055   8.4857
+                                 rural    0.8774   8.4857
+                                 urban    0.9183   8.4857
+gender  CQR-TabPFN (marginal)    ALL      0.9163   8.0267
+                                 F        0.9214   7.9826
+                                 M        0.9100   8.1128
+        FairWarn-PFN             ALL      0.9163   8.3250
+                                 F        0.9127   7.7977
+                                 M        0.9201   8.9937
+        Split-conformal CatBoost ALL      0.9055   8.4857
+                                 F        0.9118   8.4857
+                                 M        0.8965   8.4857
+                                                          Recall  FlagRate  Precision
+attr    Rule                               alpha_r group                             
+address FairWarn-PFN                        0.1    ALL    0.9542    0.7705     0.2003
+                                                   rural  0.9727    0.9283        NaN
+                                                   urban  0.9406    0.7062        NaN
+                                            0.2    ALL    0.8695    0.5074     0.2803
+                                                   rural  0.8772    0.7156        NaN
+                                                   urban  0.8571    0.4174        NaN
+        FairWarn-PFN-CV+                    0.1    ALL    0.9136    0.5300     0.2655
+                                                   rural  0.9372    0.7884        NaN
+                                                   urban  0.8923    0.4173        NaN
+                                            0.2    ALL    0.8175    0.3605     0.3480
+                                                   rural  0.8316    0.5434        NaN
+                                                   urban  0.7931    0.2826        NaN
+        Hardt EO (TabPFN pi)               -1.0    ALL    0.7406    0.3266     0.3557
+                                                   rural  0.7263    0.4419        NaN
+                                                   urban  0.7552    0.2733        NaN
+        Marginal conformal (TabPFN pi)      0.1    ALL    0.9138    0.6216     0.2432
+                                                   rural  0.9097    0.8017        NaN
+                                                   urban  0.9132    0.5446        NaN
+                                            0.2    ALL    0.8317    0.4391     0.3089
+                                                   rural  0.8268    0.6307        NaN
+                                                   urban  0.8295    0.3567        NaN
+        Plug-in group quantile (TabPFN pi)  0.1    ALL    0.8161    0.4288     0.3036
+                                                   rural  0.7617    0.5475        NaN
+                                                   urban  0.8653    0.3742        NaN
+                                            0.2    ALL    0.7063    0.3039     0.3671
+                                                   rural  0.6569    0.4113        NaN
+                                                   urban  0.7472    0.2554        NaN
+        TabPFN: y_hat < c                  -1.0    ALL    0.4623    0.1340     0.5377
+                                                   rural  0.4659    0.2098        NaN
+                                                   urban  0.4658    0.1012        NaN
+gender  FairWarn-PFN                        0.1    ALL    0.9729    0.8625     0.1791
+                                                   F      0.9584    0.8793        NaN
+                                                   M      0.9897    0.8466        NaN
+                                            0.2    ALL    0.8259    0.4534     0.2920
+                                                   F      0.8505    0.4524        NaN
+                                                   M      0.8282    0.4492        NaN
+        FairWarn-PFN-CV+                    0.1    ALL    0.9077    0.5228     0.2674
+                                                   F      0.9185    0.5187        NaN
+                                                   M      0.9176    0.5296        NaN
+                                            0.2    ALL    0.8273    0.3703     0.3434
+                                                   F      0.8465    0.3555        NaN
+                                                   M      0.8429    0.3916        NaN
+        Hardt EO (TabPFN pi)               -1.0    ALL    0.7451    0.3461     0.3471
+                                                   F      0.7467    0.3213        NaN
+                                                   M      0.7651    0.3694        NaN
+        Marginal conformal (TabPFN pi)      0.1    ALL    0.9138    0.6216     0.2432
+                                                   F      0.8943    0.5951        NaN
+                                                   M      0.9551    0.6593        NaN
+                                            0.2    ALL    0.8317    0.4391     0.3089
+                                                   F      0.8335    0.4120        NaN
+                                                   M      0.8487    0.4764        NaN
+        Plug-in group quantile (TabPFN pi)  0.1    ALL    0.8139    0.4088     0.3134
+                                                   F      0.8264    0.3976        NaN
+                                                   M      0.8282    0.4179        NaN
+                                            0.2    ALL    0.7406    0.3343     0.3481
+                                                   F      0.7155    0.3193        NaN
+                                                   M      0.7704    0.3447        NaN
+        TabPFN: y_hat < c                  -1.0    ALL    0.4623    0.1340     0.5377
+                                                   F      0.4700    0.1146        NaN
+                                                   M      0.4902    0.1628        NaN
+
+##### math: Students Performance in Exams (US, Kaggle)  n=1000  attrs=['gender', 'lunch']  lunch counts={'standard': 660, 'free/reduced': 340}  CV+=True
+  fold 1/15  (115s)
+  fold 2/15  (114s)
+  fold 3/15  (114s)
+  fold 4/15  (115s)
+  fold 5/15  (115s)
+  fold 6/15  (114s)
+  fold 7/15  (114s)
+  fold 8/15  (114s)
+  fold 9/15  (112s)
+  fold 10/15  (113s)
+  fold 11/15  (115s)
+  fold 12/15  (113s)
+  fold 13/15  (114s)
+  fold 14/15  (113s)
+  fold 15/15  (119s)
+                                              Coverage   Width
+attr   Method                   group                         
+gender CQR-TabPFN (marginal)    ALL             0.9053  0.2154
+                                F               0.8952  0.2177
+                                M               0.9146  0.2132
+       FairWarn-PFN             ALL             0.9107  0.2197
+                                F               0.8984  0.2187
+                                M               0.9227  0.2210
+       Split-conformal CatBoost ALL             0.9027  0.2291
+                                F               0.9078  0.2291
+                                M               0.8974  0.2291
+lunch  CQR-TabPFN (marginal)    ALL             0.9053  0.2154
+                                free/reduced    0.9103  0.2221
+                                standard        0.9030  0.2119
+       FairWarn-PFN             ALL             0.9080  0.2181
+                                free/reduced    0.9223  0.2312
+                                standard        0.9021  0.2118
+       Split-conformal CatBoost ALL             0.9027  0.2291
+                                free/reduced    0.8986  0.2291
+                                standard        0.9055  0.2291
+                                                                Recall  FlagRate  Precision
+attr   Rule                               alpha_r group                                    
+gender FairWarn-PFN                        0.1    ALL           0.9391    0.4077     0.5021
+                                                  F             0.9349    0.3488        NaN
+                                                  M             0.9364    0.4602        NaN
+                                           0.2    ALL           0.8093    0.2183     0.7210
+                                                  F             0.7982    0.2562        NaN
+                                                  M             0.8225    0.1813        NaN
+       FairWarn-PFN-CV+                    0.1    ALL           0.8934    0.2657     0.6508
+                                                  F             0.8969    0.3132        NaN
+                                                  M             0.8862    0.2206        NaN
+                                           0.2    ALL           0.8022    0.2080     0.7483
+                                                  F             0.8031    0.2491        NaN
+                                                  M             0.8022    0.1685        NaN
+       Hardt EO (TabPFN pi)               -1.0    ALL           0.8904    0.2703     0.6427
+                                                  F             0.8891    0.3253        NaN
+                                                  M             0.8849    0.2175        NaN
+       Marginal conformal (TabPFN pi)      0.1    ALL           0.9226    0.2800     0.6387
+                                                  F             0.9284    0.3444        NaN
+                                                  M             0.9072    0.2177        NaN
+                                           0.2    ALL           0.7965    0.2083     0.7442
+                                                  F             0.8067    0.2572        NaN
+                                                  M             0.7805    0.1607        NaN
+       Plug-in group quantile (TabPFN pi)  0.1    ALL           0.8556    0.2360     0.7015
+                                                  F             0.8551    0.2865        NaN
+                                                  M             0.8512    0.1873        NaN
+                                           0.2    ALL           0.7538    0.1890     0.7790
+                                                  F             0.7316    0.2225        NaN
+                                                  M             0.7781    0.1560        NaN
+       TabPFN: y_hat < c                  -1.0    ALL           0.8093    0.2083     0.7548
+                                                  F             0.8195    0.2548        NaN
+                                                  M             0.7870    0.1632        NaN
+lunch  FairWarn-PFN                        0.1    ALL           0.9320    0.3733     0.5479
+                                                  free/reduced  0.9467    0.4286        NaN
+                                                  standard      0.9049    0.3428        NaN
+                                           0.2    ALL           0.8270    0.2263     0.7040
+                                                  free/reduced  0.7971    0.3181        NaN
+                                                  standard      0.8517    0.1769        NaN
+       FairWarn-PFN-CV+                    0.1    ALL           0.9047    0.2710     0.6398
+                                                  free/reduced  0.8966    0.3699        NaN
+                                                  standard      0.9101    0.2193        NaN
+                                           0.2    ALL           0.8047    0.2127     0.7302
+                                                  free/reduced  0.8120    0.3151        NaN
+                                                  standard      0.7949    0.1595        NaN
+       Hardt EO (TabPFN pi)               -1.0    ALL           0.9015    0.2670     0.6491
+                                                  free/reduced  0.9141    0.3866        NaN
+                                                  standard      0.8724    0.2048        NaN
+       Marginal conformal (TabPFN pi)      0.1    ALL           0.9226    0.2800     0.6387
+                                                  free/reduced  0.9763    0.4732        NaN
+                                                  standard      0.8495    0.1808        NaN
+                                           0.2    ALL           0.7965    0.2083     0.7442
+                                                  free/reduced  0.9190    0.3823        NaN
+                                                  standard      0.6383    0.1180        NaN
+       Plug-in group quantile (TabPFN pi)  0.1    ALL           0.8327    0.2303     0.6964
+                                                  free/reduced  0.8261    0.3379        NaN
+                                                  standard      0.8263    0.1729        NaN
+                                           0.2    ALL           0.7364    0.1877     0.7573
+                                                  free/reduced  0.7394    0.2900        NaN
+                                                  standard      0.7150    0.1338        NaN
+       TabPFN: y_hat < c                  -1.0    ALL           0.8093    0.2083     0.7548
+                                                  free/reduced  0.9200    0.3816        NaN
+                                                  standard      0.6601    0.1184        NaN
+
+##### spf: Student Performance Factors (Kaggle)  n=6607  attrs=['gender', 'income']  income counts={'low': 2672, 'medium': 2666, 'high': 1269}  CV+=False
+  fold 1/15  (626s)
+  fold 2/15  (600s)
+  fold 3/15  (606s)
+  fold 4/15  (764s)
+  fold 5/15  (794s)
+  fold 6/15  (727s)
+  fold 7/15  (729s)
+  fold 8/15  (7137s)
+  fold 9/15  (884s)
+  fold 10/15  (766s)
+  fold 11/15  (766s)
+  fold 12/15  (770s)
+  fold 13/15  (907s)
+  fold 14/15  (906s)
+  fold 15/15  (873s)
+                                        Coverage   Width
+attr   Method                   group                   
+gender CQR-TabPFN (marginal)    ALL       0.9030  1.2570
+                                F         0.9051  1.2791
+                                M         0.9014  1.2408
+       FairWarn-PFN             ALL       0.9027  1.2574
+                                F         0.8992  1.2782
+                                M         0.9052  1.2423
+       Split-conformal CatBoost ALL       0.9003  1.9774
+                                F         0.8904  1.9774
+                                M         0.9075  1.9774
+income CQR-TabPFN (marginal)    ALL       0.9030  1.2570
+                                high      0.9204  1.2787
+                                low       0.8934  1.2675
+                                medium    0.9041  1.2361
+       FairWarn-PFN             ALL       0.9033  1.2575
+                                high      0.9130  1.2772
+                                low       0.9013  1.2705
+                                medium    0.9008  1.2352
+       Split-conformal CatBoost ALL       0.9003  1.9774
+                                high      0.8812  1.9774
+                                low       0.8958  1.9774
+                                medium    0.9136  1.9774
+                                                          Recall  FlagRate  Precision
+attr   Rule                               alpha_r group                              
+gender FairWarn-PFN                        0.1    ALL     0.9093    0.1343     0.9748
+                                                  F       0.9176    0.1363        NaN
+                                                  M       0.9038    0.1328        NaN
+                                           0.2    ALL     0.8115    0.1191     0.9798
+                                                  F       0.8161    0.1203        NaN
+                                                  M       0.8083    0.1182        NaN
+       Hardt EO (TabPFN pi)               -1.0    ALL     0.9851    0.1552     0.9146
+                                                  F       0.9806    0.1555        NaN
+                                                  M       0.9883    0.1549        NaN
+       Marginal conformal (TabPFN pi)      0.1    ALL     0.9072    0.1338     0.9754
+                                                  F       0.9028    0.1338        NaN
+                                                  M       0.9111    0.1338        NaN
+                                           0.2    ALL     0.8095    0.1189     0.9797
+                                                  F       0.8063    0.1188        NaN
+                                                  M       0.8125    0.1189        NaN
+       Plug-in group quantile (TabPFN pi)  0.1    ALL     0.8943    0.1318     0.9769
+                                                  F       0.8985    0.1331        NaN
+                                                  M       0.8922    0.1308        NaN
+                                           0.2    ALL     0.8020    0.1178     0.9795
+                                                  F       0.8057    0.1187        NaN
+                                                  M       0.7995    0.1169        NaN
+       TabPFN: y_hat < c                  -1.0    ALL     0.9986    0.1723     0.8350
+                                                  F       0.9984    0.1764        NaN
+                                                  M       0.9988    0.1693        NaN
+income FairWarn-PFN                        0.1    ALL     0.9128    0.1354     0.9704
+                                                  high    0.8783    0.0985        NaN
+                                                  low     0.9249    0.1613        NaN
+                                                  medium  0.9139    0.1274        NaN
+                                           0.2    ALL     0.8166    0.1200     0.9795
+                                                  high    0.8008    0.0890        NaN
+                                                  low     0.8233    0.1417        NaN
+                                                  medium  0.8172    0.1135        NaN
+       Hardt EO (TabPFN pi)               -1.0    ALL     0.9807    0.1557     0.9083
+                                                  high    0.9553    0.1126        NaN
+                                                  low     0.9909    0.1849        NaN
+                                                  medium  0.9775    0.1471        NaN
+       Marginal conformal (TabPFN pi)      0.1    ALL     0.9072    0.1338     0.9754
+                                                  high    0.9053    0.1013        NaN
+                                                  low     0.8966    0.1556        NaN
+                                                  medium  0.9217    0.1279        NaN
+                                           0.2    ALL     0.8095    0.1189     0.9797
+                                                  high    0.7835    0.0877        NaN
+                                                  low     0.8042    0.1382        NaN
+                                                  medium  0.8288    0.1147        NaN
+       Plug-in group quantile (TabPFN pi)  0.1    ALL     0.8862    0.1308     0.9753
+                                                  high    0.8292    0.0923        NaN
+                                                  low     0.8974    0.1555        NaN
+                                                  medium  0.8968    0.1248        NaN
+                                           0.2    ALL     0.7927    0.1164     0.9796
+                                                  high    0.7545    0.0841        NaN
+                                                  low     0.8097    0.1394        NaN
+                                                  medium  0.7890    0.1093        NaN
+       TabPFN: y_hat < c                  -1.0    ALL     0.9986    0.1723     0.8350
+                                                  high    1.0000    0.1357        NaN
+                                                  low     0.9993    0.1983        NaN
+                                                  medium  0.9972    0.1637        NaN
+
+Total 463.1 min

@@ -7,5 +7,6 @@ lightgbm==4.7.0
 catboost==1.2.10
 tabpfn==9.2.0
 shap==0.54.1
+fairlearn==0.15.0
 matplotlib==3.10.7
 kagglehub
