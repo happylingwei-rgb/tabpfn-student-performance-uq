@@ -63,7 +63,7 @@ TabPFN is run with the openly available **v2** weights (`ModelVersion.V2`), so n
 - **Second group attribute.** Across all 17 groups (gender plus lunch type, address or income), FairWarn-PFN's coverage is 0.898–0.937, and no group is significantly below 0.90. Split-conformal CatBoost under-covers the high-income group on D4 (0.881, *p* = 0.001).
 - **Hidden under-recall.** On D1, marginal conformal screening meets the overall recall target (0.923), but recall in the standard-lunch group is only 0.849 at α_r = 0.10 and 0.638 at α_r = 0.20 (both significant). FairWarn-PFN raises these to 0.905 and 0.852. None of FairWarn-PFN's 34 group recalls is significantly below target.
 - **Fairness baselines.** Hardt equal-opportunity post-processing equalises recall across groups, but it does not control the recall level. Overall recall is 0.58–0.63 on D2 and 0.74–0.75 on D3; on D4 it flags more students than FairWarn-PFN. Removing the finite-sample correction leaves 15 of 34 group recalls significantly below target.
-- **FairWarn-PFN-CV+.** At α_r = 0.10, it lowers the flag rate on D1–D3 by 21.5%–39.3% (Wilcoxon *p* ≤ 0.011); for example, D2 by gender goes from 0.986 to 0.712. None of its 24 group recalls is significantly below target. Its worst-case theoretical bound is weaker (about 1 − 2α_r; Barber et al., 2021), so it is evaluated empirically.
+- **FairWarn-PFN-CV+.** At α_r = 0.10, it lowers the flag rate on D1–D3 by 21.5%–39.4% (Wilcoxon *p* ≤ 0.011); for example, D2 by gender goes from 0.986 to 0.712. None of its 24 group recalls is significantly below target. Its worst-case theoretical bound is weaker (about 1 − 2α_r; Barber et al., 2021), so it is evaluated empirically.
 
 ## Licence
 
